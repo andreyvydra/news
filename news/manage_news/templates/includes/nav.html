@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light my-2 my-md-0 mr-md-3" style="background-color: #e3f2fd;">
+    <nav>
+        <h1>Bot Trader</h1>
+    </nav>
+    <nav>
+        {% if user.is_authenticated %}
+            <a class="navbar-brand" href="/logout">{{ user.username }}</a>
+        {% else %}
+            <p>
+                <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                <a class="btn btn-success" href="/login">Войти</a>
+            </p>
+{% endif %}
+    </nav>
+</nav>

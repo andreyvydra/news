@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+{% if user.is_authenticated %}
+<a href="news" class="btn btn-secondary">Добавить новость</a>
+{% for item in news %}
+<div>
+    <table width="100%">
+        <tr bgcolor="#aaaaaa">
+            <th width="40%">Title</th>
+            <th width="12%">Tags</th>
+            <th width="12%">Image</th>
+            <th width="12%">Category</th>
+            <th width="12%">Is urgent</th>
+            <th width="12%">Username</th>
+        </tr>
+        <tr bgcolor="#cccccc">
+            <td>{{item.title}}</td>
+            <td>{{item.get_tags}}</td>
+            <td>{{item.image}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.is_urgent}}</td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td bgcolor="#999999">
+                <div>
+                    <a href="/news/{{ item.id }}" class="btn btn-warning">
+                        Изменить
+                    </a>
+                    <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
+                        Удалить
+                    </a>
+                </div>
+            </td>
+            <td bgcolor="#999999"></td>
+            <td bgcolor="#999999"></td>
+            <td bgcolor="#999999"></td>
+            <td bgcolor="#999999"></td>
+            <td bgcolor="#999999"></td>
+        </tr>
+    </table>
+</div>
+<br>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
